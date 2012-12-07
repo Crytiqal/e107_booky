@@ -1,0 +1,33 @@
+A and B
+place 1 bet on A:
+A wins => winner gets his input back
+B wins => loser loses his input
+
+place 1 bet on A, 1 bet on B:
+A wins => winner gets his input back + (B/1)
+B wins => winner gets his input back + (A/1)
+
+place 1 bet on A, 3 bets on B:
+A wins => winner gets his input back + (B/1)
+B wins => winners get their input back + (A/3)
+
+
+$A = array();
+$B = array();
+
+$total = array_sum($A) + array_sum($B);
+
+if ($winner = A) {
+  $pot = array_sum($B);
+  $winners = array_sum($A);
+
+  foreach($A as $key => $value)
+  { $A[$key] = $value + $value * ($pot / $winners); }
+
+} else {
+  $pot = array_sum($A);
+  $winners = array_sum($B);
+
+  foreach($B as $key => $value)
+  { $B[$key] = $value + $value * ($pot / $winners); }
+}
